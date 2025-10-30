@@ -2,6 +2,8 @@ package com.taskmanager.todosimple.models;
 
 import java.util.List;
 import java.util.ArrayList;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +27,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "username", nullable = false, length = 100)
     @NotNull(groups = CreateUser.class)
@@ -52,10 +54,10 @@ public class User {
     }  
 
     // Getters and Setters
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -75,6 +77,7 @@ public class User {
         this.password = password;
     }
 
+    @JsonIgnore
     public List<Task> getTasks() {
         return tasks;
     }
