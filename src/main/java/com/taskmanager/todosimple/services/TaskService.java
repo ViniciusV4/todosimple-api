@@ -12,7 +12,7 @@ import com.taskmanager.todosimple.repositories.TaskRepository;
 public class TaskService {
     
     @Autowired
-    private final TaskRepository taskRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
     private UserService userService;
